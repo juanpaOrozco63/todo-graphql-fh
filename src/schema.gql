@@ -1,0 +1,85 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Todo {
+  """id de la tarea"""
+  id: Int!
+
+  """titulo de la tarea"""
+  title: String!
+
+  """descripcion de la tarea"""
+  description: String!
+
+  """estado de la tarea"""
+  done: Boolean!
+}
+
+"""Todo Agreggations"""
+type AggregationsType {
+  totalTodos: Int!
+  doneTodos: Int!
+  pendingTodos: Int!
+  totalTodosCompleted: Int! @deprecated(reason: "Use doneTodos instead")
+}
+
+type Query {
+  """prueba de hola mundo"""
+  hello: String!
+
+  """prueba de numero aleatorio"""
+  randomNumber: Float!
+
+  """prueba de numero random desde cero con argumento por defecto 10"""
+  randomFromToZero(to: Int): Int!
+
+  """Lista de todos"""
+  findAllTodo(status: Boolean!): [Todo!]!
+
+  """Obtener un todo"""
+  findOneTodo(id: Int!): Todo!
+
+  """Contar todos"""
+  totalTodos: Int!
+
+  """Contar todos completados"""
+  doneTodos: Int!
+
+  """Contar todos pendientes"""
+  pendingTodos: Int!
+  aggregations: AggregationsType!
+}
+
+type Mutation {
+  """Crear un todo"""
+  createTodo(createTodoInput: CreateTodoInput!): Todo!
+
+  """Actualizar un todo"""
+  updateTodo(updateTodoInput: UpdateTodoInput!): Todo!
+
+  """Eliminar un todo"""
+  removeTodo(id: Int!): Todo!
+}
+
+input CreateTodoInput {
+  """Descripcion de la tarea"""
+  description: String!
+
+  """Titulo de la tarea"""
+  title: String!
+}
+
+input UpdateTodoInput {
+  """Id de la tarea"""
+  id: Int!
+
+  """Descripcion de la tarea"""
+  description: String
+
+  """Titulo de la tarea"""
+  title: String
+
+  """Estado de la tarea"""
+  done: Boolean
+}
